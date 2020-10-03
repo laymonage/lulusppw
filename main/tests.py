@@ -32,6 +32,11 @@ class MainTestCase(TestCase):
         response = self.client.get(reverse('main:home'))
         self.assertEqual(response.status_code, 200)
 
+    def test_profile_url_status_200(self):
+        response = self.client.get(reverse('main:profile'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'main/profile.html')
+
 
 class MainFunctionalTestCase(FunctionalTestCase):
     def test_root_url_exists(self):
